@@ -21,5 +21,13 @@
 <% end %>
 
 <a href="/albums/new">Add a new album</a><br>
-<a href="/albums/year_sort">sort by year</a><br>
-<a href="/albums/alphabetical">sort by alphabetical</a>
+
+<form action="/albums/year_sort" method="post">
+  <button type="submit" name="button">sort by year</button>
+</form>
+<br>
+<form action="/albums/alphabetical" method="post">
+  <button type="submit" name="button">sort by alphabetical</button>
+</form>
+<!-- <a href="/albums/year_sort"></a><br> -->
+<!-- <a href="/albums/alphabetical"></a> -->

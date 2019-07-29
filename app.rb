@@ -76,11 +76,14 @@ delete ('/albums/:id/songs/:song_id') do
   erb(:album)
 end
 
-get '/albums/year_sort' do
+
+# Why are they grabbing the find path? 32
+post '/albums/year_sort' do
   @albums = Album.sort_newest
   erb(:albums)
 end
 
-get '/albums/alphabetical' do
-  redirect to('/')
+post '/albums/alphabetical' do
+  @albums = Album.all
+  erb(:albums)
 end

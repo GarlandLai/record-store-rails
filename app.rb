@@ -5,6 +5,9 @@ require('./lib/song')
 require('pry')
 also_reload('lib/**/*.rb')
 
+require("pg")
+DB = PG.connect({:dbname => "record_store"})
+
 get('/') do
   redirect to('/albums')
 end

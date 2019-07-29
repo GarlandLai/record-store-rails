@@ -19,9 +19,9 @@ require('spec_helper')
 #
   describe('#save') do
     it("saves an album") do
-      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album = Album.new({:name => "A Love Supreme", :id => nil, :release_year => 2005})
       album.save()
-      album2 = Album.new({:name => "Blue", :id => nil})
+      album2 = Album.new({:name => "Blue", :id => nil, :release_year => 2005})
       album2.save()
       expect(Album.all).to(eq([album, album2]))
     end
@@ -29,28 +29,28 @@ require('spec_helper')
 #
   describe('.clear') do
     it("clears all albums") do
-      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album = Album.new({:name => "A Love Supreme", :id => nil, :release_year => 2005})
       album.save()
-      album2 = Album.new({:name => "Blue", :id => nil})
+      album2 = Album.new({:name => "Blue", :id => nil, :release_year => 2005})
       album2.save()
       Album.clear
       expect(Album.all).to(eq([]))
     end
   end
-#
+
   describe('#==') do
     it("is the same album if it has the same attributes as another album") do
-      album = Album.new({:name => "Blue", :id => nil})
-      album2 = Album.new({:name => "Blue", :id => nil})
+      album = Album.new({:name => "Blue", :id => nil, :release_year => 2005})
+      album2 = Album.new({:name => "Blue", :id => nil, :release_year => 2005})
       expect(album).to(eq(album2))
     end
   end
 #
   describe('.find') do
     it("finds an album by id") do
-      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album = Album.new({:name => "A Love Supreme", :id => nil, :release_year => 2005})
       album.save()
-      album2 = Album.new({:name => "Blue", :id => nil})
+      album2 = Album.new({:name => "Blue", :id => nil, :release_year => 2005})
       album2.save()
       expect(Album.find(album.id)).to(eq(album))
     end
@@ -58,7 +58,7 @@ require('spec_helper')
 #
   describe('#update') do
     it("updates an album by id") do
-      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album = Album.new({:name => "A Love Supreme", :id => nil, :release_year => 2005})
       album.save()
       album.update("A Love Supreme")
       expect(album.name).to(eq("A Love Supreme"))
@@ -67,18 +67,18 @@ require('spec_helper')
 #
   describe('#delete') do
     it("deletes an album by id") do
-      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album = Album.new({:name => "A Love Supreme", :id => nil, :release_year => 2005})
       album.save()
-      album2 = Album.new({:name => "Blue", :id => nil})
+      album2 = Album.new({:name => "Blue", :id => nil, :release_year => 2005})
       album2.save()
       album.delete()
       expect(Album.all).to(eq([album2]))
     end
   end
-#
+
   describe('#songs') do
     it("returns an album's songs") do
-      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album = Album.new({:name => "A Love Supreme", :id => nil, :release_year => 2005})
       album.save()
       song = Song.new({:name => "Naima", :album_id => album.id, :id => nil})
       song.save()

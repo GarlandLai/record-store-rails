@@ -9,7 +9,7 @@ describe '#Song' do
   before(:each) do
     Album.clear
     Song.clear
-    @album = Album.new({:name => "Giant Steps", :id => nil})
+    @album = Album.new({:name => "Giant Steps", :id => nil, :release_year => 1414})
     @album.save()
   end
 #
@@ -24,7 +24,7 @@ describe '#Song' do
       expect(Song.all).to(eq([song, song2]))
     end
   end
-  #
+  # #
   describe('.clear') do
     it("clears all songs") do
       song = Song.new({:name => "Giant Steps", :album_id => @album.id, :id => nil})
@@ -43,7 +43,7 @@ describe '#Song' do
       expect(Song.all).to(eq([song]))
     end
   end
-
+  #
   describe('.find') do
     it("finds a song by id") do
       song = Song.new({:name => "Giant Steps", :album_id => @album.id, :id => nil})
@@ -65,7 +65,7 @@ describe '#Song' do
   #
   describe('#delete') do
     it("deletes all songs belonging to a deleted album") do
-      album = Album.new({:name => "A Love Supreme", :id => nil})
+      album = Album.new({:name => "A Love Supreme", :id => nil, :release_year => -123})
       album.save()
       song = Song.new({:name => "Naima", :album_id => album.id, :id => nil})
       song.save()
@@ -75,7 +75,7 @@ describe '#Song' do
   end  #
   describe('.find_by_album') do
     it("finds songs for an album") do
-      album2 = Album.new({:name => "Blue", :id => nil})
+      album2 = Album.new({:name => "Blue", :id => nil, :release_year => 1414})
       album2.save
       song = Song.new({:name => "Naima", :album_id => @album.id, :id => nil})
       song.save()

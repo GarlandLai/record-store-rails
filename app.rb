@@ -23,7 +23,7 @@ end
 
 post ('/albums') do
   name = params[:album_name]
-  album = Album.new({:name => name, :id => nil})
+  album = Album.new({:name => name, :id => nil, :release_year => params[:album_release_year]})
   album.save()
   redirect to('/albums')
 end
@@ -74,4 +74,13 @@ delete ('/albums/:id/songs/:song_id') do
   song.delete
   @album = Album.find(params[:id].to_i())
   erb(:album)
+end
+
+get '/albums/year_sort' do
+  @albums = Album.sort_newest
+  erb(:albums)
+end
+
+get '/albums/alphabetical' do
+  redirect to('/')
 end

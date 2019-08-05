@@ -6,7 +6,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @ablum = Album.new
+    @album = Album.new
     render :new
   end
 
@@ -30,7 +30,7 @@ class AlbumsController < ApplicationController
   end
 
   def update
-    @album = Album.find(params[album_id])
+    @album = Album.find(params[:id])
     if @album.update(album_params)
       redirect_to album_path
     else
